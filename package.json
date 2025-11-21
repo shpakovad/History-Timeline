@@ -6,8 +6,6 @@
     "start": "webpack serve --mode development",
     "build": "webpack --mode production",
     "type-check": "tsc --noEmit",
-    "lint": "eslint src --ext .ts,.tsx",
-    "lint:fix": "eslint src --ext .ts,.tsx --fix",
     "format": "prettier --write src/**/*.{ts,tsx,scss}",
     "format:check": "prettier --check src/**/*.{ts,tsx,scss}"
   },
