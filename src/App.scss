@@ -1,9 +1,8 @@
-@use './library/theme/scss/variables' as *;
+@use "./library/theme/scss/variables" as *;
 
 html,
 body,
-#root
-{
+#root {
   height: 100%;
   background: $BACKGROUND_PRIMARY;
   margin: 0;

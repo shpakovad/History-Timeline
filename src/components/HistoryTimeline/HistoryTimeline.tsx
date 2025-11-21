@@ -1,10 +1,5 @@
-export const HistoryTimeline = () =>
-{
-    return (
-        <section style={{zIndex:1}}>
+export const HistoryTimeline = () => {
+  return <section style={{ zIndex: 1 }}></section>;
+};
 
-        </section>
-    )
-}
-
-export default HistoryTimeline
+export default HistoryTimeline;
