@@ -1,0 +1,55 @@
+
+$FONT_FAMILY_PRIMARY: 'PT Sans', sans-serif;
+$FONT_FAMILY_SECONDARY: 'Bebas Neue', sans-serif;
+
+$FONT_SIZE_XL: 56px;
+$FONT_SIZE_L: 20px;
+$FONT_SIZE_M: 16px;
+$FONT_SIZE_S: 14px;
+
+$FONT_WEIGHT_BOLD: 700;
+$FONT_WEIGHT_REGULAR: 400;
+$FONT_WEIGHT_LIGHT: 300;
+
+$LINE_HEIGHT_NORMAL: 1.2;
+$LINE_HEIGHT_RELAXED: 1.5;
+
+@mixin font-display-large {
+  font-family: $FONT_FAMILY_SECONDARY;
+  font-size: $FONT_SIZE_XL;
+  font-weight: $FONT_WEIGHT_BOLD;
+  line-height: $LINE_HEIGHT_NORMAL;
+  font-variant-numeric: tabular-nums;
+}
+
+@mixin font-heading {
+  font-family: $FONT_FAMILY_PRIMARY;
+  font-size: $FONT_SIZE_L;
+  font-weight: $FONT_WEIGHT_BOLD;
+  line-height: $LINE_HEIGHT_NORMAL;
+  text-transform: uppercase;
+}
+
+@mixin font-body {
+  font-family: $FONT_FAMILY_PRIMARY;
+  font-size: $FONT_SIZE_M;
+  font-weight: $FONT_WEIGHT_REGULAR;
+  line-height: $LINE_HEIGHT_RELAXED;
+}
+
+@mixin font-category {
+  font-family: $FONT_FAMILY_PRIMARY;
+  font-size: $FONT_SIZE_M;
+  font-weight: $FONT_WEIGHT_BOLD;
+  line-height: $LINE_HEIGHT_NORMAL;
+  text-transform: uppercase;
+}
+
+@mixin font-year {
+  font-family: $FONT_FAMILY_PRIMARY;
+  font-size: $FONT_SIZE_S;
+  font-weight: $FONT_WEIGHT_BOLD;
+  line-height: $LINE_HEIGHT_NORMAL;
+  font-variant-numeric: tabular-nums;
+}
+
