@@ -1,3 +1,4 @@
+import { ITimePeriod } from "@data/timelineData";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
@@ -7,7 +8,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import "./TimelineDatesSlider.scss";
 
-const TimelineDatesSlider = () => {
+interface IProps {
+  activePeriod: ITimePeriod;
+}
+
+const TimelineDatesSlider = ({ activePeriod }: IProps) => {
+  console.log(activePeriod);
+  const events = activePeriod.events;
   return (
     <Swiper
       // @ts-ignore
@@ -20,11 +27,12 @@ const TimelineDatesSlider = () => {
       modules={[FreeMode, Navigation, Thumbs]}
       className="dates-swiper"
     >
-      <SwiperSlide>10</SwiperSlide>
-      <SwiperSlide>20</SwiperSlide>
-      <SwiperSlide>30</SwiperSlide>
-      <SwiperSlide>40</SwiperSlide>
-      <SwiperSlide>50</SwiperSlide>
+      {events.map(event => (
+        <SwiperSlide key={event.year}>
+          <div className="year">{event.year}</div>
+          <div className="description">{event.description}</div>
+        </SwiperSlide>
+      ))}
     </Swiper>
   );
 };

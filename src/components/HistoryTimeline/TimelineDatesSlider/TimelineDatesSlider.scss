@@ -4,6 +4,16 @@
   width: 100%;
   padding-bottom: 1rem;
 
+  .year {
+    color: $BLUE;
+    padding-bottom: 0.5rem;
+    @include font-year;
+  }
+  .description {
+    color: $BLACK_BLUE;
+    @include font-description;
+  }
+
   .swiper-button-disabled {
     visibility: hidden;
   }
@@ -11,7 +21,10 @@
   .swiper-slide {
     width: 320px !important;
     height: 135px;
-    border: 1px solid red;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   .swiper-button-next {

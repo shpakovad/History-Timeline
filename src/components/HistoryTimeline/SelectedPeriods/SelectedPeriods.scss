@@ -1,0 +1,21 @@
+@use "../../../library/theme/scss/variables" as *;
+
+.wrapper-period-title {
+  height: 160px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  span {
+    @include font-display-extra-large;
+
+    &:first-child {
+      padding-right: 4rem;
+      color: $IRIS;
+    }
+
+    &:nth-child(2) {
+      color: $FUCSIA;
+    }
+  }
+}

@@ -4,6 +4,7 @@ import { getTimelineData, ITimePeriod } from "@data/timelineData";
 
 import HistoricalDatesTitle from "./HistoricalDatesTitle/HistoricalDatesTitle";
 import "./HistoryTimeline.scss";
+import SelectedPeriods from "./SelectedPeriods/SelectedPeriods";
 import TimelineCircleSlider from "./TimelineCircleSlider/TimelineCircleSlider";
 import TimelineDatesSlider from "./TimelineDatesSlider/TimelineDatesSlider";
 
@@ -28,7 +29,12 @@ const HistoryTimeline = () => {
           onPeriodChange={onPeriodChange}
           activePeriod={activePeriod}
         />
-        <TimelineDatesSlider />
+        {activePeriod && (
+          <>
+            <SelectedPeriods activePeriodTitle={activePeriod.period} />
+            <TimelineDatesSlider activePeriod={activePeriod} />
+          </>
+        )}
       </div>
     </section>
   );

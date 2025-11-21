@@ -14,7 +14,6 @@ interface IProps {
 }
 
 const TimelineCircleSlider = ({ data, onPeriodChange, activePeriod }: IProps) => {
-
   return (
     <div>
       {data.map((item: ITimePeriod) => (
