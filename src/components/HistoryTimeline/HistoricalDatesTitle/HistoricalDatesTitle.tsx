@@ -1,4 +1,5 @@
 import "./HistoricalDatesTitle.scss";
+
 const HistoricalDatesTitle = () => {
   return (
     <div className="title-wrapper">

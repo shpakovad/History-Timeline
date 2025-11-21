@@ -1,9 +1,12 @@
+import { useEffect, useState } from "react";
+
+import { getTimelineData, ITimePeriod } from "@data/timelineData";
+
 import HistoricalDatesTitle from "./HistoricalDatesTitle/HistoricalDatesTitle";
-import TimelineDatesSlider from "./TimelineDatesSlider/TimelineDatesSlider";
 import "./HistoryTimeline.scss";
 import TimelineCircleSlider from "./TimelineCircleSlider/TimelineCircleSlider";
-import { getTimelineData, ITimePeriod } from "../../data/timelineData";
-import { useEffect, useState } from "react";
+import TimelineDatesSlider from "./TimelineDatesSlider/TimelineDatesSlider";
+
 const HistoryTimeline = () => {
   const [periods, setPeriods] = useState<ITimePeriod[]>([]);
   const [activePeriod, setActivePeriod] = useState<ITimePeriod | null>(null);

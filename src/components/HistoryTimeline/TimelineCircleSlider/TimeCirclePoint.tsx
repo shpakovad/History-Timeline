@@ -1,4 +1,4 @@
-import { calculateCirclePosition } from "../../../utils/calculateCirclePosition";
+import { calculateCirclePosition } from "@utils/calculateCirclePosition";
 
 interface IProps {
   index: number;

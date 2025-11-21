@@ -53,7 +53,11 @@ const config: Configuration = {
     resolve: {
         extensions: ['.tsx', '.ts', '.js', '.jsx'],
         alias: {
-            '@': path.resolve(__dirname, 'src')
+            '@': path.resolve(__dirname, 'src'),
+            '@components': path.resolve(__dirname, 'src/components'),
+            '@data': path.resolve(__dirname, 'src/data'),
+            '@styles': path.resolve(__dirname, 'src/styles'),
+            '@utils': path.resolve(__dirname, 'src/utils')
         }
     },
     plugins: [

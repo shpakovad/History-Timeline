@@ -1,15 +1,11 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode, Navigation, Thumbs } from "swiper/modules";
-import { useState } from "react";
-
-import "./TimelineCircleSlider.scss";
-
+import { ITimePeriod } from "@data/timelineData";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
-import { ITimePeriod } from "../../../data/timelineData";
+
 import TimeCirclePoint from "./TimeCirclePoint";
+import "./TimelineCircleSlider.scss";
 
 interface IProps {
   data: ITimePeriod[];
