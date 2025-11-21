@@ -1,10 +1,14 @@
 import React from 'react';
+import HistoryTimeline from "./components/HistoryTimeline/HistoryTimeline";
+import CrossLayout from "./components/layouts/CrossLayout/CrossLayout";
 
 const App: React.FC = () => {
     return (
         <div>
-            <h1>History Timeline Project</h1>
-            <p>Проект запущен! 🎉</p>
+            <CrossLayout>
+                <HistoryTimeline/>
+            </CrossLayout>
+
         </div>
     );
 };
