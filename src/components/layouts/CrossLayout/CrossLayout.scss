@@ -3,12 +3,12 @@
 .layout-wrapper {
   margin: 0 auto;
   width: 75%;
+  max-width: 1440px;
   height: 100vh;
   display: flex;
   align-items: center;
 
-  .layout
-  {
+  .layout {
     border-right: 1px solid $BORDER_LIGHT;
     border-left: 1px solid $BORDER_LIGHT;
     height: 100%;
@@ -42,6 +42,5 @@
       pointer-events: none;
       border-radius: 50%;
     }
-
   }
 }

@@ -1,3 +1,5 @@
+@use "./colors" as *;
+
 $FONT_FAMILY_PRIMARY: "PT Sans", sans-serif;
 $FONT_FAMILY_SECONDARY: "Bebas Neue", sans-serif;
 
@@ -14,10 +16,12 @@ $LINE_HEIGHT_NORMAL: 1.2;
 $LINE_HEIGHT_RELAXED: 1.5;
 
 @mixin font-display-large {
-  font-family: $FONT_FAMILY_SECONDARY;
+  font-family: $FONT_FAMILY_PRIMARY;
   font-size: $FONT_SIZE_XL;
   font-weight: $FONT_WEIGHT_BOLD;
   line-height: $LINE_HEIGHT_NORMAL;
+  color: $LARGE_NEXT_COLOR;
+  stroke: $BLACK;
   font-variant-numeric: tabular-nums;
 }
 

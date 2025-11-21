@@ -7,12 +7,12 @@ interface IProps {
 const CrossLayout = ({ children }: IProps) => {
   return (
     <div className="layout-wrapper">
-        <div className="layout">
-            <div className="vertical-line" />
-            <div className="horizontal-line" />
-            <div className="circle" />
-            {children}
-        </div>
+      <div className="layout">
+        <div className="vertical-line" />
+        <div className="horizontal-line" />
+        <div className="circle" />
+        {children}
+      </div>
     </div>
   );
 };

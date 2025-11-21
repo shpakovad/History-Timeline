@@ -1,0 +1,23 @@
+@use "../../../library/theme/scss/variables" as *;
+
+.title-wrapper {
+  height: 120px;
+  display: flex;
+  align-items: center;
+  width: 343px;
+  flex-direction: row;
+  margin-top: 3rem;
+
+  .vertical-divider {
+    height: 100%;
+    width: 0;
+    border-left: 5px solid;
+    border-image-source: $GRADIENT_VERTICAL;
+    border-image-slice: 1;
+  }
+
+  span {
+    @include font-display-large;
+    padding-left: 4.875rem;
+  }
+}
