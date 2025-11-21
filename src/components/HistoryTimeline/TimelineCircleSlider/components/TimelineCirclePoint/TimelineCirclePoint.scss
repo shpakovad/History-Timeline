@@ -1,0 +1,24 @@
+@use "../../../../../library/theme/scss/variables" as *;
+
+.circle-point {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: $LARGE_NEXT_COLOR;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  border: 1px solid $BLACK;
+  padding: 0;
+
+  &.active {
+    @include font-heading;
+    font-weight: normal;
+    width: 56px;
+    height: 56px;
+
+    border: 1px solid rgba(48, 62, 88, 0.5);
+    background: $BACKGROUND_PRIMARY;
+    color: $LARGE_NEXT_COLOR;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  }
+}

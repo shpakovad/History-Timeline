@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { getTimelineData, ITimePeriod } from "@data/timelineData";
 
@@ -17,11 +17,17 @@ const HistoryTimeline = () => {
     setActivePeriod(data.periods[0]);
   }, []);
 
+  const onPeriodChange = useCallback((period: ITimePeriod) => setActivePeriod(period), []);
+
   return (
     <section className="layout">
       <HistoricalDatesTitle />
       <div className="wrapper-swiper">
-        <TimelineCircleSlider data={periods} />
+        <TimelineCircleSlider
+          data={periods}
+          onPeriodChange={onPeriodChange}
+          activePeriod={activePeriod}
+        />
         <TimelineDatesSlider />
       </div>
     </section>

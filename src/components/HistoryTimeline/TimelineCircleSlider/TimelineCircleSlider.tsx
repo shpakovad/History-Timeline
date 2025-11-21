@@ -4,20 +4,27 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
-import TimeCirclePoint from "./TimeCirclePoint";
+import TimeCirclePoint from "./components/TimelineCirclePoint/TimeCirclePoint";
 import "./TimelineCircleSlider.scss";
 
 interface IProps {
   data: ITimePeriod[];
+  onPeriodChange: (period: ITimePeriod) => void;
+  activePeriod: ITimePeriod | null;
 }
 
-const TimelineCircleSlider = ({ data }: IProps) => {
-  //const [thumbsSwiper, setThumbsSwiper] = useState(null);
+const TimelineCircleSlider = ({ data, onPeriodChange, activePeriod }: IProps) => {
 
   return (
     <div>
-      {data.map((item: ITimePeriod, index) => (
-        <TimeCirclePoint key={item.id} index={index} periodsLength={data.length} id={item.id} />
+      {data.map((item: ITimePeriod) => (
+        <TimeCirclePoint
+          key={item.id}
+          period={item}
+          periodsLength={data.length}
+          onPeriodChange={onPeriodChange}
+          activePeriod={activePeriod}
+        />
       ))}
     </div>
   );
