@@ -1,9 +1,14 @@
 @use "./library/theme/scss/variables" as *;
 
+
+* {
+  box-sizing: border-box;
+}
 html,
 body,
 #root {
   height: 100%;
   background: $BACKGROUND_PRIMARY;
   margin: 0;
+  padding: 0;
 }
