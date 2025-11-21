@@ -2,4 +2,7 @@ $BACKGROUND_PRIMARY: #f4f5f9;
 $BORDER_LIGHT: #d9d9d9;
 $BLACK: #000;
 $LARGE_NEXT_COLOR: #42567a;
-$GRADIENT_VERTICAL: linear-gradient(180deg, #3877ee 0%, #ef5da8 100%);
+$BLUE: #3877ee;
+$WHITE: #fff;
+
+$GRADIENT_VERTICAL: linear-gradient(180deg, $BLUE 0%, #ef5da8 100%);

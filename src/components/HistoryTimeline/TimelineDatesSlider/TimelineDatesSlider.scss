@@ -1,0 +1,38 @@
+@use "../../../library/theme/scss/variables" as *;
+
+.dates-swiper {
+  width: 100%;
+  padding-bottom: 1rem;
+
+  .swiper-button-disabled {
+    visibility: hidden;
+  }
+
+  .swiper-slide {
+    width: 320px !important;
+    height: 135px;
+    border: 1px solid red;
+  }
+
+  .swiper-button-next {
+    margin-right: 0.5rem;
+  }
+
+  .swiper-button-prev {
+    margin-left: 0.5rem;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: $WHITE;
+
+    .swiper-navigation-icon {
+      width: 5px;
+      height: 10px;
+      color: $BLUE;
+    }
+  }
+}

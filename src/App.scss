@@ -5,7 +5,8 @@
 }
 html,
 body,
-#root {
+#root,
+.app {
   height: 100%;
   background: $BACKGROUND_PRIMARY;
   margin: 0;

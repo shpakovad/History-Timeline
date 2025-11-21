@@ -1,10 +1,10 @@
 import "./HistoricalDatesTitle.scss";
-export const HistoricalDatesTitle = () => {
+const HistoricalDatesTitle = () => {
   return (
-    <section className="title-wrapper">
+    <div className="title-wrapper">
       <div className="vertical-divider" />
       <span>Исторические даты</span>
-    </section>
+    </div>
   );
 };
 
