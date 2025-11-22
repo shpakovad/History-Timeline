@@ -6,13 +6,13 @@ import "swiper/css/thumbs";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import "./TimelineDatesSlider.scss";
+import "./TimelinePeriodsSlider.scss";
 
 interface IProps {
   activePeriod: ITimePeriod;
 }
 
-const TimelineDatesSlider = ({ activePeriod }: IProps) => {
+const TimelinePeriodsSlider = ({ activePeriod }: IProps) => {
   console.log(activePeriod);
   const events = activePeriod.events;
   return (
@@ -37,4 +37,4 @@ const TimelineDatesSlider = ({ activePeriod }: IProps) => {
   );
 };
 
-export default TimelineDatesSlider;
+export default TimelinePeriodsSlider;

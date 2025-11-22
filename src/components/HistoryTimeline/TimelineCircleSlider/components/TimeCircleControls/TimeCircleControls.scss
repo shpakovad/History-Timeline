@@ -1,0 +1,35 @@
+@use "../../../../../library/theme/scss/variables" as *;
+
+.wrapper-controls {
+  span {
+    font-size: $FONT_SIZE_S;
+    color: $BLACK_BLUE;
+  }
+  .buttons {
+    margin-top: 1rem;
+    button {
+      width: 50px;
+      height: 50px;
+      border: 1px solid $BLACK_BLUE;
+      border-radius: 50%;
+      color: $BLACK_BLUE;
+      &:hover
+      {
+        cursor: pointer;
+        background: $WHITE;
+      }
+
+
+      &:disabled
+      {
+        border: 1px solid rgba(66, 86, 122, 0.5);
+        color: rgba(66, 86, 122, 0.5);
+        &:hover
+        {
+          pointer-events: none;
+          background: unset;
+        }
+      }
+    }
+  }
+}
