@@ -35,12 +35,19 @@ const TimelineCirclePoint = ({ period, periodsLength, onPeriodChange, activePeri
   const circleLeftPosition = useMemo(() => `calc(50% + ${position.x}px)`, [position.x]);
   const circleTopPosition = useMemo(() => `calc(50% + ${position.y}px)`, [position.y]);
 
+  const classForCirclePoint =
+      [
+        'circle-point',
+        isActive && 'active',
+          isHovered && 'hovered'
+      ].filter( Boolean ).join( ' ' );
+
 
   return (
     <button
         ref={buttonRef}
       key={id}
-      className={`circle-point ${isActive ? "active" : ""}`}
+      className={classForCirclePoint}
       style={{
         left: circleLeftPosition,
         top: circleTopPosition,

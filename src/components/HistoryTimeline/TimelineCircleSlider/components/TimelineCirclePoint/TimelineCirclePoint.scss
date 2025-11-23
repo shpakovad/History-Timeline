@@ -1,5 +1,9 @@
 @use "../../../../../library/theme/scss/variables" as *;
 
+
+$TRANSITION: all 0.5s ease-in-out;
+
+
 .circle-point {
   font-family: $FONT_FAMILY_PRIMARY;
   width: 6px;
@@ -10,6 +14,7 @@
   transform: translate(-50%, -50%);
   border: 1px solid $BLACK;
   padding: 0;
+  transition: $TRANSITION;
 
   .category{
     @include font-heading;
@@ -25,6 +30,7 @@
     background: $DARK_BLUE;
     border: 1px solid $BLACK_BLUE;
     cursor: pointer;
+    transition: $TRANSITION;
 
     span
     {
@@ -33,12 +39,12 @@
     }
   }
 
-  &.active {
+  &.active,
+  &.hovered{
     @include font-heading;
     font-weight: normal;
     width: 56px;
     height: 56px;
-
     border: 1px solid rgba(48, 62, 88, 0.5);
     background: $BACKGROUND_PRIMARY;
     color: $BLACK_BLUE;
