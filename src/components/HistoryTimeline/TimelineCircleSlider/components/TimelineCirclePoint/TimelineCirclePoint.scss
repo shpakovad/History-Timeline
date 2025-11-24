@@ -1,5 +1,5 @@
 @use "../../../../../library/theme/scss/variables" as *;
-$TRANSITION: all 0.4s ease-in-out;
+
 
 .circle {
   position: absolute;
@@ -26,26 +26,31 @@ $TRANSITION: all 0.4s ease-in-out;
   transform: translate(-50%, -50%);
   border: 1px solid $BLACK;
   padding: 0;
-  transition: $TRANSITION;
+  transition: width 0.3s ease-in-out, height 0.3s ease-in-out, background 0.3s ease-in-out, border 0.3s ease-in-out;
   pointer-events: all;
   z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  .circle-text-wrapper {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    pointer-events: none;
-
-    .circle-text {
-      transform-origin: center;
-      display: inline-block;
-    }
+  span {
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    transform-origin: center;
+    display: inline-block;
   }
 
   &:hover {
+    width: 36px;
+    height: 36px;
+    background: $DARK_BLUE;
+    border: 1px solid $BLACK_BLUE;
     cursor: pointer;
+
+    span {
+      opacity: 1;
+      color: $BLACK_BLUE;
+    }
   }
 
   &.active,
@@ -58,5 +63,9 @@ $TRANSITION: all 0.4s ease-in-out;
     background: $BACKGROUND_PRIMARY;
     color: $BLACK_BLUE;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+    span {
+      opacity: 1;
+    }
   }
 }
