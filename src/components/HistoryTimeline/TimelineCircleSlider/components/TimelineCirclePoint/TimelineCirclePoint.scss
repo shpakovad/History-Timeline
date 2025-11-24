@@ -1,6 +1,19 @@
 @use "../../../../../library/theme/scss/variables" as *;
+$TRANSITION: all 0.3s ease-in-out;
 
-$TRANSITION: all 0.5s ease-in-out;
+.circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 530px;
+  height: 530px;
+  border: 1px solid $BORDER_LIGHT;
+  pointer-events: none;
+  border-radius: 50%;
+  box-sizing: border-box;
+  transform-style: preserve-3d;
+}
 
 .circle-point {
   font-family: $FONT_FAMILY_PRIMARY;
@@ -13,12 +26,10 @@ $TRANSITION: all 0.5s ease-in-out;
   border: 1px solid $BLACK;
   padding: 0;
   transition: $TRANSITION;
+  pointer-events: all;
 
-  .category {
-    @include font-heading;
-    position: absolute;
-    bottom: 15px;
-    left: 75px;
+  span {
+    display: block;
   }
 
   &:hover {
@@ -27,7 +38,6 @@ $TRANSITION: all 0.5s ease-in-out;
     background: $DARK_BLUE;
     border: 1px solid $BLACK_BLUE;
     cursor: pointer;
-    transition: $TRANSITION;
 
     span {
       color: $BLACK_BLUE;

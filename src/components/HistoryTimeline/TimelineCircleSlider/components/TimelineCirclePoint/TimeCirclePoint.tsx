@@ -1,4 +1,4 @@
-import { use, useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 
 import { ITimePeriod } from "@data/timelineData";
 import { calculateCirclePosition } from "@utils/calculateCirclePosition";
@@ -7,32 +7,33 @@ import "./TimelineCirclePoint.scss";
 
 interface IProps {
   period: ITimePeriod;
-  onPeriodChange: (period: ITimePeriod) => void;
   periodsLength: number;
+  onPeriodChange: (period: ITimePeriod) => void;
   activePeriod: ITimePeriod | null;
+  index: number;
+  targetRotation: number;
 }
 
-const TimelineCirclePoint = ({ period, periodsLength, onPeriodChange, activePeriod }: IProps) => {
-  const { id, category } = period;
-  const buttonRef = useRef<HTMLButtonElement>(null);
+const TimelineCirclePoint = ({
+  period,
+  periodsLength,
+  onPeriodChange,
+  activePeriod,
+  index,
+  targetRotation,
+}: IProps) => {
+  const { id } = period;
   const [isHovered, setIsHovered] = useState<Boolean>(false);
-  const handleMouseEnter = () => {
-    if (buttonRef.current) {
-      setIsHovered(true);
-    }
-  };
 
-  const handleMouseLeave = () => {
-    if (buttonRef.current) {
-      setIsHovered(false);
-    }
-  };
+  const position = useMemo(
+    () => calculateCirclePosition(index, periodsLength),
+    [index, periodsLength]
+  );
 
-  const position = calculateCirclePosition(id - 1, periodsLength);
   const isActive = useMemo(() => id === activePeriod?.id, [id, activePeriod?.id]);
 
-  const circleLeftPosition = useMemo(() => `calc(50% + ${position.x}px)`, [position.x]);
-  const circleTopPosition = useMemo(() => `calc(50% + ${position.y}px)`, [position.y]);
+  const handleMouseEnter = () => setIsHovered(true);
+  const handleMouseLeave = () => setIsHovered(false);
 
   const classForCirclePoint = ["circle-point", isActive && "active", isHovered && "hovered"]
     .filter(Boolean)
@@ -40,24 +41,20 @@ const TimelineCirclePoint = ({ period, periodsLength, onPeriodChange, activePeri
 
   return (
     <button
-      ref={buttonRef}
       key={id}
       className={classForCirclePoint}
       style={{
-        left: circleLeftPosition,
-        top: circleTopPosition,
+        left: `calc(50% + ${position.x}px)`,
+        top: `calc(50% + ${position.y}px)`,
       }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={() => onPeriodChange(period)}
     >
-      {isHovered && !isActive && <span>{id}</span>}
-      {isActive && (
-        <>
-          <span>{id}</span>
-          <div className="category">{category}</div>
-        </>
+      {isHovered && !isActive && (
+        <span style={{ transform: `rotate(${-targetRotation}deg)` }}>{id}</span>
       )}
+      {isActive && <span style={{ transform: `rotate(${-targetRotation}deg)` }}>{id}</span>}
     </button>
   );
 };

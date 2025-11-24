@@ -1,4 +1,8 @@
-export const calculateCirclePosition = (index: number, total: number, radius: number = 265) => {
+export const calculateCirclePosition = (
+  index: number,
+  total: number,
+  radius: number = 265 // 530px / 2
+) => {
   const startAngle = -60;
   const angle = startAngle + (index / total) * 360;
 

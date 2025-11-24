@@ -11,21 +11,24 @@ interface IProps {
   data: ITimePeriod[];
   onPeriodChange: (period: ITimePeriod) => void;
   activePeriod: ITimePeriod | null;
+  targetRotation: number;
 }
 
-const TimelineCircleSlider = ({ data, onPeriodChange, activePeriod }: IProps) => {
+const TimelineCircleSlider = ({ data, onPeriodChange, activePeriod, targetRotation }: IProps) => {
   return (
-    <div>
-      {data.map((item: ITimePeriod) => (
+    <>
+      {data.map((item: ITimePeriod, index: number) => (
         <TimeCirclePoint
           key={item.id}
           period={item}
           periodsLength={data.length}
           onPeriodChange={onPeriodChange}
           activePeriod={activePeriod}
+          index={index}
+          targetRotation={targetRotation}
         />
       ))}
-    </div>
+    </>
   );
 };
 

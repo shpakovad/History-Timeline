@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, RefObject } from "react";
 
 import "./CrossLayout.scss";
 
@@ -11,7 +11,7 @@ const CrossLayout = ({ children }: IProps) => {
       <div className="layout">
         <div className="vertical-line" />
         <div className="horizontal-line" />
-        <div className="circle" />
+
         {children}
       </div>
     </div>
