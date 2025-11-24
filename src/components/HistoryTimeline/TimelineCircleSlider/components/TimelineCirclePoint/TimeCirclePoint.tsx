@@ -39,6 +39,8 @@ const TimelineCirclePoint = ({
     .filter(Boolean)
     .join(" ");
 
+  const isShowText = isHovered || isActive;
+
   return (
     <button
       key={id}
@@ -51,10 +53,7 @@ const TimelineCirclePoint = ({
       onMouseLeave={handleMouseLeave}
       onClick={() => onPeriodChange(period)}
     >
-      {isHovered && !isActive && (
-        <span style={{ transform: `rotate(${-targetRotation}deg)` }}>{id}</span>
-      )}
-      {isActive && <span style={{ transform: `rotate(${-targetRotation}deg)` }}>{id}</span>}
+      { isShowText && <span style={{ transform: `rotate(${-targetRotation}deg)` }}>{id}</span>}
     </button>
   );
 };

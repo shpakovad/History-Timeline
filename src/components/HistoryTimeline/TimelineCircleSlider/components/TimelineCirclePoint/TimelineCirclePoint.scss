@@ -38,11 +38,6 @@ $TRANSITION: all 0.3s ease-in-out;
     background: $DARK_BLUE;
     border: 1px solid $BLACK_BLUE;
     cursor: pointer;
-
-    span {
-      color: $BLACK_BLUE;
-      font-weight: 700;
-    }
   }
 
   &.active,
