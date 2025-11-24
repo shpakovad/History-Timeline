@@ -1,6 +1,5 @@
 @use "../../../../../library/theme/scss/variables" as *;
 
-
 .circle {
   position: absolute;
   top: 50%;
@@ -26,7 +25,11 @@
   transform: translate(-50%, -50%);
   border: 1px solid $BLACK;
   padding: 0;
-  transition: width 0.3s ease-in-out, height 0.3s ease-in-out, background 0.3s ease-in-out, border 0.3s ease-in-out;
+  transition:
+    width 0.3s ease-in-out,
+    height 0.3s ease-in-out,
+    background 0.3s ease-in-out,
+    border 0.3s ease-in-out;
   pointer-events: all;
   z-index: 5;
   display: flex;

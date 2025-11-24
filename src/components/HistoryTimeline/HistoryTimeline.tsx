@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import TimeCircleControls from "@components/HistoryTimeline/TimelineCircleSlider/components/TimeCircleControls/TimeCircleControls";
 import { getTimelineData, ITimePeriod } from "@data/timelineData";
@@ -13,9 +13,9 @@ import TimelineDatesSlider from "./TimelinePeriodsSlider/TimelinePeriodsSlider";
 const HistoryTimeline = ({ circleRef }: any) => {
   const [periods, setPeriods] = useState<ITimePeriod[]>([]);
   const [activePeriod, setActivePeriod] = useState<ITimePeriod | null>(null);
-  const [targetRotation, setTargetRotation] = useState(0);
-
   const [categoryTitle, setCategoryTitle] = useState<string | null>(null);
+
+  const targetRotation = useRef(0);
 
   const data = getTimelineData();
 
@@ -42,7 +42,7 @@ const HistoryTimeline = ({ circleRef }: any) => {
       },
       onStart: () => {
         setCategoryTitle(null);
-        setTargetRotation(rotation);
+        targetRotation.current = rotation;
       },
     });
   };
@@ -67,7 +67,7 @@ const HistoryTimeline = ({ circleRef }: any) => {
             data={periods}
             onPeriodChange={onPeriodChange}
             activePeriod={activePeriod}
-            targetRotation={targetRotation}
+            targetRotation={targetRotation.current}
           />
         </div>
 
