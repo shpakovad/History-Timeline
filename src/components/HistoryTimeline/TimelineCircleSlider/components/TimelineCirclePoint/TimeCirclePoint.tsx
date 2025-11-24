@@ -53,7 +53,7 @@ const TimelineCirclePoint = ({
       onMouseLeave={handleMouseLeave}
       onClick={() => onPeriodChange(period)}
     >
-      { isShowText && <span style={{ transform: `rotate(${-targetRotation}deg)` }}>{id}</span>}
+      {isShowText && <span style={{ transform: `rotate(${-targetRotation}deg)` }}>{id}</span>}
     </button>
   );
 };
