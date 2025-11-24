@@ -1,5 +1,5 @@
 @use "../../../../../library/theme/scss/variables" as *;
-$TRANSITION: all 0.3s ease-in-out;
+$TRANSITION: all 0.4s ease-in-out;
 
 .circle {
   position: absolute;
@@ -13,6 +13,7 @@ $TRANSITION: all 0.3s ease-in-out;
   border-radius: 50%;
   box-sizing: border-box;
   transform-style: preserve-3d;
+  z-index: 4;
 }
 
 .circle-point {
@@ -27,16 +28,23 @@ $TRANSITION: all 0.3s ease-in-out;
   padding: 0;
   transition: $TRANSITION;
   pointer-events: all;
+  z-index: 5;
 
-  span {
-    display: block;
+  .circle-text-wrapper {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+
+    .circle-text {
+      transform-origin: center;
+      display: inline-block;
+    }
   }
 
   &:hover {
-    width: 36px;
-    height: 36px;
-    background: $DARK_BLUE;
-    border: 1px solid $BLACK_BLUE;
     cursor: pointer;
   }
 
