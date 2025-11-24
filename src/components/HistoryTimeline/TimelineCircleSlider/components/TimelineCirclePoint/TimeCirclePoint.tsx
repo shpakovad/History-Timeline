@@ -1,4 +1,4 @@
-import {use, useMemo, useRef, useState} from "react";
+import { use, useMemo, useRef, useState } from "react";
 
 import { ITimePeriod } from "@data/timelineData";
 import { calculateCirclePosition } from "@utils/calculateCirclePosition";
@@ -15,19 +15,18 @@ interface IProps {
 const TimelineCirclePoint = ({ period, periodsLength, onPeriodChange, activePeriod }: IProps) => {
   const { id, category } = period;
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const [isHovered,setIsHovered] = useState<Boolean>(false)
+  const [isHovered, setIsHovered] = useState<Boolean>(false);
   const handleMouseEnter = () => {
     if (buttonRef.current) {
-      setIsHovered(true)
+      setIsHovered(true);
     }
   };
 
   const handleMouseLeave = () => {
     if (buttonRef.current) {
-      setIsHovered(false)
+      setIsHovered(false);
     }
   };
-
 
   const position = calculateCirclePosition(id - 1, periodsLength);
   const isActive = useMemo(() => id === activePeriod?.id, [id, activePeriod?.id]);
@@ -35,30 +34,24 @@ const TimelineCirclePoint = ({ period, periodsLength, onPeriodChange, activePeri
   const circleLeftPosition = useMemo(() => `calc(50% + ${position.x}px)`, [position.x]);
   const circleTopPosition = useMemo(() => `calc(50% + ${position.y}px)`, [position.y]);
 
-  const classForCirclePoint =
-      [
-        'circle-point',
-        isActive && 'active',
-          isHovered && 'hovered'
-      ].filter( Boolean ).join( ' ' );
-
+  const classForCirclePoint = ["circle-point", isActive && "active", isHovered && "hovered"]
+    .filter(Boolean)
+    .join(" ");
 
   return (
     <button
-        ref={buttonRef}
+      ref={buttonRef}
       key={id}
       className={classForCirclePoint}
       style={{
         left: circleLeftPosition,
         top: circleTopPosition,
       }}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       onClick={() => onPeriodChange(period)}
     >
-      {
-        isHovered && ! isActive && <span>{id}</span>
-      }
+      {isHovered && !isActive && <span>{id}</span>}
       {isActive && (
         <>
           <span>{id}</span>

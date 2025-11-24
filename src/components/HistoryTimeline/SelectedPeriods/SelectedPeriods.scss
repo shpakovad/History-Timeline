@@ -6,6 +6,7 @@
   align-items: center;
   width: 100%;
   justify-content: center;
+  position: absolute;
   span {
     @include font-display-extra-large;
 

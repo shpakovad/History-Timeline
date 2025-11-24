@@ -13,27 +13,27 @@ interface IProps {
 }
 
 const TimelinePeriodsSlider = ({ activePeriod }: IProps) => {
-  console.log(activePeriod);
   const events = activePeriod.events;
+
   return (
-    <Swiper
-      // @ts-ignore
-      // onSwiper={setThumbsSwiper}
-      spaceBetween={30}
-      slidesPerView={3}
-      freeMode={true}
-      navigation={true}
-      watchSlidesProgress={true}
-      modules={[FreeMode, Navigation, Thumbs]}
-      className="dates-swiper"
-    >
-      {events.map(event => (
-        <SwiperSlide key={event.year}>
-          <div className="year">{event.year}</div>
-          <div className="description">{event.description}</div>
-        </SwiperSlide>
-      ))}
-    </Swiper>
+    <div className="wrapper-time-line-periods">
+      <Swiper
+        spaceBetween={30}
+        slidesPerView={3}
+        freeMode={true}
+        navigation={true}
+        watchSlidesProgress={true}
+        modules={[FreeMode, Navigation, Thumbs]}
+        className="dates-swiper"
+      >
+        {events.map(event => (
+          <SwiperSlide key={event.year}>
+            <div className="year">{event.year}</div>
+            <div className="description">{event.description}</div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
   );
 };
 

@@ -18,13 +18,13 @@ const TimeCircleControls = ({ activePoint, onPeriodChange, data }: IProps) => {
       </span>
       <div className="buttons">
         <button onClick={() => onPeriodChange(data[activePoint - 2])} disabled={activePoint === 1}>
-            &lt;
+          &lt;
         </button>
         <button
           onClick={() => onPeriodChange(data[activePoint])}
           disabled={activePoint === data.length}
         >
-            &gt;
+          &gt;
         </button>
       </div>
     </div>

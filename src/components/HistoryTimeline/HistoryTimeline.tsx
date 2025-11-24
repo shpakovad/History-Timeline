@@ -36,6 +36,7 @@ const HistoryTimeline = () => {
         {activePeriod && (
           <>
             <SelectedPeriods activePeriodTitle={activePeriod.period} />
+
             <TimeCircleControls
               activePoint={activePeriod.id}
               data={periods}
