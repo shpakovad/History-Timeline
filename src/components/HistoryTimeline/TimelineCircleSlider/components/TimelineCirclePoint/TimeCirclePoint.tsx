@@ -54,8 +54,14 @@ const TimelineCirclePoint = ({
       onClick={() => onPeriodChange(period)}
     >
       {isShowText && (
-        <span className="circle-text-wrapper">
-          <span className="circle-text" style={{ transform: `rotate(${-targetRotation}deg)` }}>
+          <span className="circle-text-wrapper">
+          <span
+              className="circle-text"
+              style={{
+                transform: `rotate(${-targetRotation}deg)`,
+                transition: 'transform 1s ease-in-out'
+              }}
+          >
             {id}
           </span>
         </span>
