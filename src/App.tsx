@@ -2,13 +2,14 @@ import { RefObject, useRef } from "react";
 
 import HistoryTimeline from "./components/HistoryTimeline/HistoryTimeline";
 import CrossLayout from "./components/layouts/CrossLayout/CrossLayout";
+import {useDeviceDetection} from "@/hooks/useDeviceDetection";
 
 const App = () => {
-  const circleRef = useRef<RefObject<null>>(null);
+  const {isMobile} = useDeviceDetection();
   return (
     <div>
       <CrossLayout>
-        <HistoryTimeline circleRef={circleRef} />
+        <HistoryTimeline/>
       </CrossLayout>
     </div>
   );

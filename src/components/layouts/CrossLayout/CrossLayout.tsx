@@ -11,7 +11,6 @@ const CrossLayout = ({ children }: IProps) => {
       <div className="layout">
         <div className="vertical-line" />
         <div className="horizontal-line" />
-
         {children}
       </div>
     </div>

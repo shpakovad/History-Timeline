@@ -11,6 +11,7 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
 import "./TimelinePeriodsSlider.scss";
+import SwiperEvent from "swiper";
 
 
 
@@ -22,12 +23,24 @@ const TimelinePeriodsSlider = ({ activePeriod }: IProps) => {
   const events = activePeriod.events;
 
     const { showClickCircle, ClickCircleComponent } = useClickCircle();
-    const handleTouchStart = (swiper: any) => {
+    const handleTouchStart = (swiper: SwiperEvent) => {
         const { touches:{ startX, startY } } = swiper;
         showClickCircle({
             position:{x:startX, y:startY}
         });
     };
+
+    const handleButtonPosition = (swiper: any, isNext = true) =>
+    {
+        const element = isNext ? swiper.navigation.nextEl : swiper.navigation.prevEl;
+        const  sizes = element.getBoundingClientRect();
+        const { x, y } = sizes;
+
+        showClickCircle({
+            position:{x: x+20, y: y+20},
+            size:{width:50,height:50}
+        });
+    }
 
 
 
@@ -43,16 +56,14 @@ const TimelinePeriodsSlider = ({ activePeriod }: IProps) => {
         watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}
         className="dates-swiper"
-
+        onNavigationNext={(swiper)=>handleButtonPosition(swiper)}
+        onNavigationPrev={(swiper)=>handleButtonPosition(swiper, false)}
         onTouchStart={handleTouchStart}
-
       >
-        {events.map((event, index) => (
+        {events.map((event) => (
           <SwiperSlide key={event.year}>
-
-                  <div className="year">{event.year}</div>
-                  <div className="description">{event.description}</div>
-
+              <div className="year">{event.year}</div>
+              <div className="description">{event.description}</div>
           </SwiperSlide>
         ))}
       </Swiper>

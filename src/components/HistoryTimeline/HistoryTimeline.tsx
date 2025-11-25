@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, {RefObject, useCallback, useEffect, useRef, useState} from "react";
 import { gsap } from "gsap";
 
 import TimeCircleControls from "@components/HistoryTimeline/TimelineCircleSlider/components/TimeCircleControls/TimeCircleControls";
@@ -14,12 +14,13 @@ import TimelineDatesSlider from "./TimelinePeriodsSlider/TimelinePeriodsSlider";
 import "./HistoryTimeline.scss";
 
 
-const HistoryTimeline = ({ circleRef }: any) => {
+const HistoryTimeline = () => {
   const [periods, setPeriods] = useState<ITimePeriod[]>([]);
   const [activePeriod, setActivePeriod] = useState<ITimePeriod | null>(null);
   const [categoryTitle, setCategoryTitle] = useState<string | null>(null);
 
   const targetRotation = useRef(0);
+  const circleRef = useRef<HTMLDivElement | null>(null);
 
   const data = getTimelineData();
   const { showClickCircle, ClickCircleComponent } = useClickCircle();
