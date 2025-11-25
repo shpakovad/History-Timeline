@@ -12,7 +12,7 @@
   "plugins": ["@trivago/prettier-plugin-sort-imports"],
   "importOrder": [
     "^react",
-    "^next",
+    "^swiper",
     "<THIRD_PARTY_MODULES>",
     "^@/(.*)$",
     "^[./]"

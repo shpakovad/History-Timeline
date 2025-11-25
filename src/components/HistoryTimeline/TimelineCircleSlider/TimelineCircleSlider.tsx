@@ -1,8 +1,9 @@
-import { ITimePeriod } from "@data/timelineData";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+
+import { ITimePeriod } from "@data/timelineData";
 
 import TimeCirclePoint from "./components/TimelineCirclePoint/TimeCirclePoint";
 import "./TimelineCircleSlider.scss";
