@@ -1,10 +1,11 @@
 import { ITimePeriod } from "@data/timelineData";
+import React from "react";
 
 import "./TimeCircleControls.scss";
 
 interface IProps {
   activePoint: number;
-  onPeriodChange: (period: ITimePeriod) => void;
+  onPeriodChange: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>,period: ITimePeriod) => void;
   data: ITimePeriod[];
 }
 
@@ -17,11 +18,18 @@ const TimeCircleControls = ({ activePoint, onPeriodChange, data }: IProps) => {
         0{activePoint} / 0{common}
       </span>
       <div className="buttons">
-        <button onClick={() => onPeriodChange(data[activePoint - 2])} disabled={activePoint === 1}>
+        <button onClick={
+            (event) =>
+                onPeriodChange(event,data[activePoint - 2])
+        }
+                disabled={activePoint === 1}>
           &lt;
         </button>
         <button
-          onClick={() => onPeriodChange(data[activePoint])}
+          onClick={
+            (event) =>
+                onPeriodChange(event,data[activePoint])
+        }
           disabled={activePoint === data.length}
         >
           &gt;

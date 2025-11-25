@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 
 import { ITimePeriod } from "@data/timelineData";
 import { calculateCirclePosition } from "@utils/calculateCirclePosition";
@@ -8,7 +8,7 @@ import "./TimelineCirclePoint.scss";
 interface IProps {
   period: ITimePeriod;
   periodsLength: number;
-  onPeriodChange: (period: ITimePeriod) => void;
+  onPeriodChange: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>,period: ITimePeriod) => void;
   activePeriod: ITimePeriod | null;
   index: number;
   targetRotation: number;
@@ -51,7 +51,9 @@ const TimelineCirclePoint = ({
       }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      onClick={() => onPeriodChange(period)}
+      onClick={(event) => {
+        onPeriodChange(event,period)
+      }}
     >
       {isShowText && (
         <span className="circle-text-wrapper">

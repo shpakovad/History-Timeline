@@ -1,14 +1,17 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
 
 import TimeCircleControls from "@components/HistoryTimeline/TimelineCircleSlider/components/TimeCircleControls/TimeCircleControls";
 import { getTimelineData, ITimePeriod } from "@data/timelineData";
-import { gsap } from "gsap";
+import {useClickCircle} from "@/hooks/useClickCircle";
 
 import HistoricalDatesTitle from "./HistoricalDatesTitle/HistoricalDatesTitle";
-import "./HistoryTimeline.scss";
 import SelectedPeriods from "./SelectedPeriods/SelectedPeriods";
 import TimelineCircleSlider from "./TimelineCircleSlider/TimelineCircleSlider";
 import TimelineDatesSlider from "./TimelinePeriodsSlider/TimelinePeriodsSlider";
+
+import "./HistoryTimeline.scss";
+
 
 const HistoryTimeline = ({ circleRef }: any) => {
   const [periods, setPeriods] = useState<ITimePeriod[]>([]);
@@ -18,7 +21,7 @@ const HistoryTimeline = ({ circleRef }: any) => {
   const targetRotation = useRef(0);
 
   const data = getTimelineData();
-
+  const { showClickCircle, ClickCircleComponent } = useClickCircle();
   useEffect(() => {
     setPeriods(data.periods);
     setActivePeriod(data.periods[0]);
@@ -48,7 +51,13 @@ const HistoryTimeline = ({ circleRef }: any) => {
   };
 
   const onPeriodChange = useCallback(
-    (period: ITimePeriod) => {
+    (event: React.MouseEvent<HTMLButtonElement, MouseEvent>,period: ITimePeriod) => {
+      const clickX = event.clientX;
+      const clickY = event.clientY;
+      showClickCircle({
+        position: {x:clickX, y:clickY},
+        size:{width: 60, height:60}
+      })
       setActivePeriod(period);
       rotateCircle(period, periods);
     },
@@ -58,6 +67,7 @@ const HistoryTimeline = ({ circleRef }: any) => {
   return (
     <>
       <HistoricalDatesTitle />
+      <ClickCircleComponent/>
       <div className="wrapper-category-name">
         <span className="category">{categoryTitle}</span>
       </div>
