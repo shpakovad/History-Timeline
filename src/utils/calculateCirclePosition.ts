@@ -1,7 +1,9 @@
+import { CIRCLE_SIZE } from "@data/constants/constants";
+
 export const calculateCirclePosition = (
   index: number,
   total: number,
-  radius: number = 265 // 530px / 2
+  radius: number = CIRCLE_SIZE.width / 2
 ) => {
   const startAngle = -60;
   const angle = startAngle + (index / total) * 360;

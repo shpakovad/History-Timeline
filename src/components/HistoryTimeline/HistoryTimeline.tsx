@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 
 import TimeCircleControls from "@components/HistoryTimeline/TimelineCircleSlider/components/TimeCircleControls/TimeCircleControls";
 import { getTimelineData, ITimePeriod } from "@data/timelineData";
+import {CIRCLE_SIZE} from "@data/constants/constants";
 import {useClickCircle} from "@/hooks/useClickCircle";
 
 import HistoricalDatesTitle from "./HistoricalDatesTitle/HistoricalDatesTitle";
@@ -72,7 +73,12 @@ const HistoryTimeline = ({ circleRef }: any) => {
         <span className="category">{categoryTitle}</span>
       </div>
       <div className="wrapper-swiper">
-        <div className="circle" ref={circleRef}>
+        <div
+            className="circle"
+            style={{
+                ...CIRCLE_SIZE
+            }}
+            ref={circleRef}>
           <TimelineCircleSlider
             data={periods}
             onPeriodChange={onPeriodChange}
