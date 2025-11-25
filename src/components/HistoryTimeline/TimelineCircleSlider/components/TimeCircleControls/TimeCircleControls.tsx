@@ -1,5 +1,6 @@
-import { ITimePeriod } from "@data/timelineData";
 import React from "react";
+
+import { ITimePeriod } from "@data/timelineData";
 
 import "./TimeCircleControls.scss";
 
