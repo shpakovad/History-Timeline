@@ -20,3 +20,19 @@
     }
   }
 }
+
+@include mobile {
+  .wrapper-period-title {
+    height: auto;
+    position: static;
+    margin-bottom: 5rem;
+    span {
+      @include font-display-large;
+      font-size: 60px;
+
+      &:first-child {
+        padding-right: 2rem;
+      }
+    }
+  }
+}

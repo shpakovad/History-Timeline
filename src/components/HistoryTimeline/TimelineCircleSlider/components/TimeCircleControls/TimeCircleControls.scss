@@ -36,3 +36,30 @@
     }
   }
 }
+
+@include mobile {
+  .wrapper-controls {
+    position: sticky;
+    padding-left: 0;
+    bottom: 1rem;
+    z-index: 5;
+
+    span {
+      font-size: $FONT_SIZE_S;
+      color: $BLACK_BLUE;
+    }
+    .buttons {
+      z-index: 10;
+      position: relative;
+      top: 0;
+      margin-top: 0.5rem;
+      button {
+        width: 35px;
+        height: 35px;
+        &:first-child {
+          margin-right: 1rem;
+        }
+      }
+    }
+  }
+}

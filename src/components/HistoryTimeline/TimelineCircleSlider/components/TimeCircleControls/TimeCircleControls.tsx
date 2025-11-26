@@ -7,7 +7,7 @@ import "./TimeCircleControls.scss";
 interface IProps {
   activePoint: number;
   onPeriodChange: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>,period: ITimePeriod) => void;
-  data: ITimePeriod[];
+  data: ITimePeriod[]
 }
 
 const TimeCircleControls = ({ activePoint, onPeriodChange, data }: IProps) => {

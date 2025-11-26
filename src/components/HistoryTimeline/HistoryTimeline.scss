@@ -41,3 +41,29 @@
     }
   }
 }
+
+@include mobile {
+  .layout {
+    .wrapper-swiper {
+      justify-content: flex-start;
+    }
+
+    .circle {
+      display: none;
+    }
+
+    .wrapper-category-name {
+      position: unset;
+      border-bottom: 1px solid $BORDER_LIGHT;
+      margin-bottom: 1.5rem;
+
+      .category {
+        @include font-heading;
+        position: static;
+        color: $BLACK_BLUE;
+        margin-bottom: 2rem;
+        display: inline-block;
+      }
+    }
+  }
+}

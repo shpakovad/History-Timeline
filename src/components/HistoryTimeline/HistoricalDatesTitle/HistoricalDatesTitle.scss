@@ -21,3 +21,20 @@
     padding-left: 4.875rem;
   }
 }
+
+@include mobile {
+  .title-wrapper {
+    height: 120px;
+    width: 120px;
+    margin-top: 3rem;
+    margin-bottom: 6rem;
+
+    span {
+      @include font-display-large-mobile;
+      padding-left: 0;
+    }
+    .vertical-divider {
+      display: none;
+    }
+  }
+}

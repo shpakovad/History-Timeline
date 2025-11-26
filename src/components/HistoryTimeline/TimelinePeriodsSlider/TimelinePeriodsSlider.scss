@@ -54,3 +54,32 @@
     }
   }
 }
+
+@include mobile {
+  .wrapper-time-line-periods {
+    margin-bottom: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+
+    .dates-swiper {
+      flex-grow: 1;
+      .swiper-slide {
+        width: 220px !important;
+      }
+
+      .swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {
+        bottom: 3rem;
+      }
+
+      .swiper-pagination-bullet.swiper-pagination-bullet-active {
+        background: $GRAY;
+      }
+
+      .swiper-button-next,
+      .swiper-button-prev {
+        display: none;
+      }
+    }
+  }
+}
