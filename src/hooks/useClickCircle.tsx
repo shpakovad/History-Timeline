@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { gsap } from "gsap";
 
@@ -52,24 +52,23 @@ export const useClickCircle = () => {
   const ClickCircleComponent = () => {
     if (!clickPosition) return null;
 
-    return (
-      <div
-        ref={circleRef}
-        className="click-circle"
-        style={{
-          position: "fixed",
-          left: `${clickPosition.x}px`,
-          top: `${clickPosition.y}px`,
-          transform: "translate(-50%, -50%)",
-          zIndex: 1000,
-          pointerEvents: "none",
-          width: `${circleSize.width}px`,
-          height: `${circleSize.height}px`,
-          border: "2px solid black",
-          borderRadius: "50%",
-        }}
-      />
+    const circleStyle = useMemo<React.CSSProperties>(
+      () => ({
+        position: "fixed",
+        left: `${clickPosition.x}px`,
+        top: `${clickPosition.y}px`,
+        transform: "translate(-50%, -50%)",
+        zIndex: 1000,
+        pointerEvents: "none",
+        width: `${circleSize.width}px`,
+        height: `${circleSize.height}px`,
+        border: "2px solid black",
+        borderRadius: "50%",
+      }),
+      [clickPosition]
     );
+
+    return <div ref={circleRef} className="click-circle" style={circleStyle} />;
   };
 
   return {

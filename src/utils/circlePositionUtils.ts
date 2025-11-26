@@ -1,6 +1,6 @@
 import { CIRCLE_SIZE } from "@data/constants/constants";
 
-export const calculateCirclePosition = (
+export const calculateCirclePositionUtils = (
   index: number,
   total: number,
   radius: number = CIRCLE_SIZE.width / 2

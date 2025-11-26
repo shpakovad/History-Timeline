@@ -1,5 +1,7 @@
 import React from "react";
 
+import { getDoubleNumberFormat } from "@utils/formatsUtils";
+
 import { ITimePeriod } from "@data/timelineData";
 
 import "./TimeCircleControls.scss";
@@ -19,7 +21,7 @@ const TimeCircleControls = ({ activePoint, onPeriodChange, data }: IProps) => {
   return (
     <div className="wrapper-controls">
       <span>
-        0{activePoint} / 0{common}
+        {getDoubleNumberFormat(activePoint)} / {getDoubleNumberFormat(common)}
       </span>
       <div className="buttons">
         <button

@@ -28,9 +28,10 @@ const HistoryTimeline = () => {
 
   const { showClickCircle, ClickCircleComponent } = useClickCircle();
   useEffect(() => {
+    const firstPeriod = data.periods[0];
     setPeriods(data.periods);
-    setActivePeriod(data.periods[0]);
-    setCategoryTitle(data.periods[0].category);
+    setActivePeriod(firstPeriod);
+    setCategoryTitle(firstPeriod.category);
   }, []);
 
   const { isMobile } = useDeviceDetection();
@@ -57,7 +58,7 @@ const HistoryTimeline = () => {
         },
       });
     },
-    [data.periods, activePeriod]
+    [data.periods]
   );
 
   const onPeriodChange = useCallback(
