@@ -63,7 +63,8 @@
     display: flex;
 
     .dates-swiper {
-      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
       .swiper-slide {
         width: 220px !important;
       }
