@@ -86,6 +86,7 @@ const TimelinePeriodsSlider = ({ activePeriod,isMobile,data,onPeriodChange }: IP
         slidesPerView={3}
         freeMode={true}
         watchSlidesProgress={true}
+        navigation={true}
         modules={modules}
         className="dates-swiper"
         onNavigationNext={(swiper)=>handleButtonPosition(swiper)}
@@ -97,8 +98,7 @@ const TimelinePeriodsSlider = ({ activePeriod,isMobile,data,onPeriodChange }: IP
                 renderBullet: function (index, className) {
                     return `<span class="${className}"></span>`;
                 }
-            },
-            navigation:true
+            }
         })}
         onPaginationRender={(swiper, paginationEl) =>onMobilePagination(paginationEl)}
       >
