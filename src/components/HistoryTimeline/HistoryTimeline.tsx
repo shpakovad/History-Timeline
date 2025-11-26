@@ -35,27 +35,30 @@ const HistoryTimeline = () => {
 
   const { isMobile } = useDeviceDetection();
 
-  const rotateCircle = (activePeriod: ITimePeriod, periods: ITimePeriod[]) => {
-    if (!circleRef.current) return;
+  const rotateCircle = useCallback(
+    (activePeriod: ITimePeriod) => {
+      if (!circleRef.current) return;
 
-    const activeIndex = periods.findIndex(p => p.id === activePeriod.id);
-    const anglePerItem = 360 / periods.length;
-    const rotation = -activeIndex * anglePerItem;
+      const activeIndex = data.periods.findIndex(p => p.id === activePeriod.id);
+      const anglePerItem = 360 / data.periods.length;
+      const rotation = -activeIndex * anglePerItem;
 
-    gsap.to(circleRef.current, {
-      duration: 1,
-      rotation: rotation,
-      transformOrigin: "center center",
-      ease: "power2.inOut",
-      onComplete: () => {
-        setCategoryTitle(activePeriod?.category);
-      },
-      onStart: () => {
-        setCategoryTitle(null);
-        targetRotation.current = rotation;
-      },
-    });
-  };
+      gsap.to(circleRef.current, {
+        duration: 1,
+        rotation: rotation,
+        transformOrigin: "center center",
+        ease: "power2.inOut",
+        onComplete: () => {
+          setCategoryTitle(activePeriod?.category);
+        },
+        onStart: () => {
+          setCategoryTitle(null);
+          targetRotation.current = rotation;
+        },
+      });
+    },
+    [data.periods, activePeriod]
+  );
 
   const onPeriodChange = useCallback(
     (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, period: ITimePeriod) => {
@@ -69,9 +72,9 @@ const HistoryTimeline = () => {
         size: { width: defaultSize, height: defaultSize },
       });
       setActivePeriod(period);
-      rotateCircle(period, periods);
+      rotateCircle(period);
     },
-    [periods, isMobile]
+    [isMobile]
   );
 
   return (

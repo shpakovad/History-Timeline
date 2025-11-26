@@ -41,8 +41,9 @@ const TimelinePeriodsSlider = ({ activePeriod, isMobile, data, onPeriodChange }:
     const {
       touches: { startX, startY },
     } = swiper;
+    const { x, y } = isMobile ? { x: startX, y: startY } : { x: startX - 10, y: startY - 20 };
     showClickCircle({
-      position: { x: startX, y: startY },
+      position: { x, y },
     });
   };
 
