@@ -1,6 +1,5 @@
-
-import HistoryTimeline from "./components/HistoryTimeline/HistoryTimeline";
-import CrossLayout from "./components/layouts/CrossLayout/CrossLayout";
+import CrossLayout from "@components/layouts/CrossLayout/CrossLayout";
+import HistoryTimeline from "@components/HistoryTimeline/HistoryTimeline";
 
 const App = () => {
 

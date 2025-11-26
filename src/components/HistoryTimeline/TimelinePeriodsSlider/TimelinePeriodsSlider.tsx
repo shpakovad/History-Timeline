@@ -1,7 +1,7 @@
 import {useMemo} from "react";
+
 import { FreeMode, Navigation, Thumbs, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import SwiperEvent from "swiper";
 
 import { ITimePeriod } from "@data/timelineData";

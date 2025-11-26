@@ -1,20 +1,18 @@
-import React, {useCallback, useEffect, useMemo, useRef, useState} from "react";
+import React, {useCallback, useEffect, useRef, useState} from "react";
 import { gsap } from "gsap";
 
-import TimeCircleControls from "@components/HistoryTimeline/TimelineCircleSlider/components/TimeCircleControls/TimeCircleControls";
-import { getTimelineData, ITimePeriod } from "@data/timelineData";
+import {getTimelineData, ITimePeriod} from "@data/timelineData";
+import {useClickCircle} from "@hooks/useClickCircle";
+import {useDeviceDetection} from "@hooks/useDeviceDetection";
+import HistoricalDatesTitle from "@components/HistoryTimeline/HistoricalDatesTitle/HistoricalDatesTitle";
 import {CIRCLE_SIZE} from "@data/constants/constants";
-import {useClickCircle} from "@/hooks/useClickCircle";
-import {useDeviceDetection} from "@/hooks/useDeviceDetection";
-
-import HistoricalDatesTitle from "./HistoricalDatesTitle/HistoricalDatesTitle";
-import SelectedPeriods from "./SelectedPeriods/SelectedPeriods";
-import TimelineCircleSlider from "./TimelineCircleSlider/TimelineCircleSlider";
-import TimelineDatesSlider from "./TimelinePeriodsSlider/TimelinePeriodsSlider";
+import TimelineCircleSlider from "@components/HistoryTimeline/TimelineCircleSlider/TimelineCircleSlider";
+import SelectedPeriods from "@components/HistoryTimeline/SelectedPeriods/SelectedPeriods";
+import TimeCircleControls
+    from "@components/HistoryTimeline/TimelineCircleSlider/components/TimeCircleControls/TimeCircleControls";
+import TimelineDatesSlider from "@components/HistoryTimeline/TimelinePeriodsSlider/TimelinePeriodsSlider";
 
 import "./HistoryTimeline.scss";
-
-
 
 const HistoryTimeline = () => {
   const [periods, setPeriods] = useState<ITimePeriod[]>([]);
@@ -32,7 +30,8 @@ const HistoryTimeline = () => {
     setActivePeriod(data.periods[0]);
     setCategoryTitle(data.periods[0].category);
   }, []);
-    const {isMobile} = useDeviceDetection();
+
+  const {isMobile} = useDeviceDetection();
 
   const rotateCircle = (activePeriod: ITimePeriod, periods: ITimePeriod[]) => {
     if (!circleRef.current) return;
@@ -63,9 +62,9 @@ const HistoryTimeline = () => {
 
       const defaultSize = isMobile ? 45 : 60;
 
-          showClickCircle({
-        position: {x:clickX, y:clickY},
-        size:{width: defaultSize, height:defaultSize}
+      showClickCircle({
+          position: {x:clickX, y:clickY},
+          size:{width: defaultSize, height:defaultSize}
       })
       setActivePeriod(period);
       rotateCircle(period, periods);
