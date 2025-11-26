@@ -1,16 +1,18 @@
-import React, {useCallback, useEffect, useRef, useState} from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+
 import { gsap } from "gsap";
 
-import {getTimelineData, ITimePeriod} from "@data/timelineData";
-import {useClickCircle} from "@hooks/useClickCircle";
-import {useDeviceDetection} from "@hooks/useDeviceDetection";
 import HistoricalDatesTitle from "@components/HistoryTimeline/HistoricalDatesTitle/HistoricalDatesTitle";
-import {CIRCLE_SIZE} from "@data/constants/constants";
-import TimelineCircleSlider from "@components/HistoryTimeline/TimelineCircleSlider/TimelineCircleSlider";
 import SelectedPeriods from "@components/HistoryTimeline/SelectedPeriods/SelectedPeriods";
-import TimeCircleControls
-    from "@components/HistoryTimeline/TimelineCircleSlider/components/TimeCircleControls/TimeCircleControls";
+import TimeCircleControls from "@components/HistoryTimeline/TimelineCircleSlider/components/TimeCircleControls/TimeCircleControls";
+import TimelineCircleSlider from "@components/HistoryTimeline/TimelineCircleSlider/TimelineCircleSlider";
 import TimelineDatesSlider from "@components/HistoryTimeline/TimelinePeriodsSlider/TimelinePeriodsSlider";
+
+import { CIRCLE_SIZE } from "@data/constants/constants";
+import { getTimelineData, ITimePeriod } from "@data/timelineData";
+
+import { useClickCircle } from "@hooks/useClickCircle";
+import { useDeviceDetection } from "@hooks/useDeviceDetection";
 
 import "./HistoryTimeline.scss";
 
@@ -31,7 +33,7 @@ const HistoryTimeline = () => {
     setCategoryTitle(data.periods[0].category);
   }, []);
 
-  const {isMobile} = useDeviceDetection();
+  const { isMobile } = useDeviceDetection();
 
   const rotateCircle = (activePeriod: ITimePeriod, periods: ITimePeriod[]) => {
     if (!circleRef.current) return;
@@ -56,16 +58,16 @@ const HistoryTimeline = () => {
   };
 
   const onPeriodChange = useCallback(
-    (event: React.MouseEvent<HTMLButtonElement, MouseEvent>,period: ITimePeriod) => {
+    (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, period: ITimePeriod) => {
       const clickX = event.clientX;
       const clickY = event.clientY;
 
       const defaultSize = isMobile ? 45 : 60;
 
       showClickCircle({
-          position: {x:clickX, y:clickY},
-          size:{width: defaultSize, height:defaultSize}
-      })
+        position: { x: clickX, y: clickY },
+        size: { width: defaultSize, height: defaultSize },
+      });
       setActivePeriod(period);
       rotateCircle(period, periods);
     },
@@ -75,48 +77,49 @@ const HistoryTimeline = () => {
   return (
     <>
       <HistoricalDatesTitle />
-      <ClickCircleComponent/>
-        {
-            ! isMobile && <>
-            <div className="wrapper-category-name">
-                <span className="category">{categoryTitle}</span>
-            </div>
-            <div
+      <ClickCircleComponent />
+      {!isMobile && (
+        <>
+          <div className="wrapper-category-name">
+            <span className="category">{categoryTitle}</span>
+          </div>
+          <div
             className="circle"
             style={{
-            ...CIRCLE_SIZE
-        }}
-            ref={circleRef}>
+              ...CIRCLE_SIZE,
+            }}
+            ref={circleRef}
+          >
             <TimelineCircleSlider
-            data={periods}
-            onPeriodChange={onPeriodChange}
-            activePeriod={activePeriod}
-            targetRotation={targetRotation.current}
+              data={periods}
+              onPeriodChange={onPeriodChange}
+              activePeriod={activePeriod}
+              targetRotation={targetRotation.current}
             />
-            </div>
-            </>
-        }
+          </div>
+        </>
+      )}
       <div className="wrapper-swiper">
         {activePeriod && (
           <>
             <SelectedPeriods activePeriodTitle={activePeriod.period} />
-              {
-                  isMobile ?
-                      <div className="wrapper-category-name">
-                          <span className="category">{categoryTitle}</span>
-                      </div>
-                      :<TimeCircleControls
-                          activePoint={activePeriod.id}
-                          data={periods}
-                          onPeriodChange={onPeriodChange}
-                      />
-              }
-
-            <TimelineDatesSlider
-                activePeriod={activePeriod}
-                isMobile={isMobile}
+            {isMobile ? (
+              <div className="wrapper-category-name">
+                <span className="category">{categoryTitle}</span>
+              </div>
+            ) : (
+              <TimeCircleControls
+                activePoint={activePeriod.id}
                 data={periods}
                 onPeriodChange={onPeriodChange}
+              />
+            )}
+
+            <TimelineDatesSlider
+              activePeriod={activePeriod}
+              isMobile={isMobile}
+              data={periods}
+              onPeriodChange={onPeriodChange}
             />
           </>
         )}

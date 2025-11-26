@@ -1,20 +1,22 @@
 import React from "react";
 
-import { ITimePeriod } from "@data/timelineData";
-
-import TimeCirclePoint
-  from "@components/HistoryTimeline/TimelineCircleSlider/components/TimelineCirclePoint/TimeCirclePoint";
-
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
+import TimeCirclePoint from "@components/HistoryTimeline/TimelineCircleSlider/components/TimelineCirclePoint/TimeCirclePoint";
+
+import { ITimePeriod } from "@data/timelineData";
+
 import "./TimelineCircleSlider.scss";
 
 interface IProps {
   data: ITimePeriod[];
-  onPeriodChange: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, period: ITimePeriod) => void;
+  onPeriodChange: (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    period: ITimePeriod
+  ) => void;
   activePeriod: ITimePeriod | null;
   targetRotation: number;
 }
