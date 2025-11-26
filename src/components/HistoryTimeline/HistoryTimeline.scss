@@ -7,15 +7,13 @@
   flex-direction: column;
 
   .wrapper-category-name {
-    position: relative;
     width: 100%;
-    margin-bottom: 11.25rem;
 
     .category {
       @include font-heading;
       color: $BLACK_BLUE;
       position: absolute;
-      top: 18px;
+      top: 23%;
       left: 63%;
     }
   }
