@@ -78,44 +78,40 @@ const HistoryTimeline = () => {
       <HistoricalDatesTitle />
       <ClickCircleComponent/>
         {
-            ! isMobile &&
+            ! isMobile && <>
             <div className="wrapper-category-name">
                 <span className="category">{categoryTitle}</span>
             </div>
+            <div
+            className="circle"
+            style={{
+            ...CIRCLE_SIZE
+        }}
+            ref={circleRef}>
+            <TimelineCircleSlider
+            data={periods}
+            onPeriodChange={onPeriodChange}
+            activePeriod={activePeriod}
+            targetRotation={targetRotation.current}
+            />
+            </div>
+            </>
         }
       <div className="wrapper-swiper">
-          {
-              ! isMobile &&
-              <div
-                  className="circle"
-                  style={{
-                      ...CIRCLE_SIZE
-                  }}
-                  ref={circleRef}>
-                  <TimelineCircleSlider
-                      data={periods}
-                      onPeriodChange={onPeriodChange}
-                      activePeriod={activePeriod}
-                      targetRotation={targetRotation.current}
-                  />
-              </div>
-          }
         {activePeriod && (
           <>
             <SelectedPeriods activePeriodTitle={activePeriod.period} />
               {
-                  isMobile && <div className="wrapper-category-name">
-                      <span className="category">{categoryTitle}</span>
-                  </div>
+                  isMobile ?
+                      <div className="wrapper-category-name">
+                          <span className="category">{categoryTitle}</span>
+                      </div>
+                      :<TimeCircleControls
+                          activePoint={activePeriod.id}
+                          data={periods}
+                          onPeriodChange={onPeriodChange}
+                      />
               }
-              {
-              ! isMobile &&
-              <TimeCircleControls
-                  activePoint={activePeriod.id}
-                  data={periods}
-                  onPeriodChange={onPeriodChange}
-              />
-          }
 
             <TimelineDatesSlider
                 activePeriod={activePeriod}

@@ -6,7 +6,8 @@
   align-items: center;
   width: 100%;
   justify-content: center;
-  position: absolute;
+  margin-bottom: 8vh;
+  z-index: 2;
   span {
     @include font-display-extra-large;
 
