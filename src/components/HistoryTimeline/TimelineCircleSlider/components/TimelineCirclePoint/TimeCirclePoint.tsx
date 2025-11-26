@@ -68,7 +68,7 @@ const TimelineCirclePoint = ({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={event => {
-        onPeriodChange(event, period);
+        ! isActive && onPeriodChange(event, period);
       }}
     >
       {isShowText && (
