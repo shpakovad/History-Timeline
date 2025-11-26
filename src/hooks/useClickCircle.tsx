@@ -33,21 +33,13 @@ export const useClickCircle = () => {
   }, []);
 
   useEffect(() => {
-    if (circleRef.current && clickPosition) {
-      const circle = circleRef.current;
+    if (!circleRef.current || !clickPosition) return;
 
-      gsap.set(circle, {
-        scale: 1,
-        opacity: 1,
-      });
-
-      setTimeout(() => {
-        gsap.set(circle, {
-          scale: 0,
-          opacity: 0,
-        });
-      }, 200);
-    }
+    gsap.fromTo(
+      circleRef.current,
+      { scale: 1, opacity: 1 },
+      { scale: 0, opacity: 0, duration: 0.25, ease: "power2.out" }
+    );
   }, [clickPosition]);
   const ClickCircleComponent = () => {
     if (!clickPosition) return null;
