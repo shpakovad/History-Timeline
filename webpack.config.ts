@@ -1,6 +1,4 @@
-
 import { Configuration } from 'webpack';
-
 import 'webpack-dev-server';
 import path = require("path");
 import HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -45,19 +43,30 @@ const config: Configuration = {
                             }
                         }
                     },
-                    'sass-loader'
+                    {
+                        loader: 'sass-loader', // ← sassOptions ДОЛЖЕН быть здесь!
+                        options: {
+                            sassOptions: {
+                                includePaths: [
+                                    path.resolve(__dirname, 'src'),
+                                    path.resolve(__dirname, 'src/library/theme/scss')
+                                ]
+                            }
+                        }
+                    }
                 ]
             }
         ]
     },
     resolve: {
-        extensions: ['.tsx', '.ts', '.js', '.jsx'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss', '.css'],
         alias: {
             '@': path.resolve(__dirname, 'src'),
             '@components': path.resolve(__dirname, 'src/components'),
             '@data': path.resolve(__dirname, 'src/data'),
-            '@styles': path.resolve(__dirname, 'src/styles'),
-            '@utils': path.resolve(__dirname, 'src/utils')
+            '@utils': path.resolve(__dirname, 'src/utils'),
+            '@hooks': path.resolve(__dirname, 'src/hooks'),
+            '@library': path.resolve(__dirname, 'src/library'),
         }
     },
     plugins: [

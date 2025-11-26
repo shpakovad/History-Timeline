@@ -2,7 +2,6 @@
   "endOfLine": "auto",
   "semi": true,
   "singleQuote": false,
-  "doubleQuote": true,
   "tabWidth": 2,
   "useTabs": false,
   "printWidth": 100,
@@ -14,6 +13,10 @@
     "^react",
     "^swiper",
     "<THIRD_PARTY_MODULES>",
+    "^@library/(.*)$",
+    "^@components/(.*)$",
+    "^@data/(.*)$",
+    "^@hooks/(.*)$",
     "^@/(.*)$",
     "^[./]"
   ],

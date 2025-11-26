@@ -5,8 +5,9 @@
       "@/*": ["src/*"],
       "@components/*": ["src/components/*"],
       "@data/*": ["src/data/*"],
-      "@styles/*": ["src/styles/*"],
-      "@utils/*": ["src/utils/*"]
+      "@utils/*": ["src/utils/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@library/*": ["src/library/*"]
     },
     "target": "ES5",
     "lib": ["dom", "dom.iterable", "ES6"],
