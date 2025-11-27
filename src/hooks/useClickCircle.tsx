@@ -38,7 +38,7 @@ export const useClickCircle = () => {
     gsap.fromTo(
       circleRef.current,
       { scale: 1, opacity: 1 },
-      { scale: 0, opacity: 0, duration: 0.25, ease: "power2.out" }
+      { scale: 0, opacity: 0, duration: 0.9, ease: "power2.out" }
     );
   }, [clickPosition]);
   const ClickCircleComponent = () => {

@@ -13,6 +13,11 @@
       @include font-year;
     }
     .description {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
       color: $BLACK_BLUE;
       @include font-description;
     }
@@ -63,6 +68,9 @@
     .dates-swiper {
       display: flex;
       flex-direction: column;
+      .description {
+        display: block;
+      }
       .swiper-slide {
         width: 220px !important;
       }
