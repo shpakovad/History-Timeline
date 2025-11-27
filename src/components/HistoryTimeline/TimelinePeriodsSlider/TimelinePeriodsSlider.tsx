@@ -10,24 +10,13 @@ import { FreeMode, Navigation, Pagination, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import TimeCircleControls from "@components/HistoryTimeline/TimelineCircleSlider/components/TimeCircleControls/TimeCircleControls";
-
-import { ITimePeriod } from "@data/timelineData";
+import {IPeriodsSliderProps} from "@components/HistoryTimeline/types";
 
 import { useClickCircle } from "@/hooks/useClickCircle";
 
 import "./TimelinePeriodsSlider.scss";
 
-interface IProps {
-  activePeriod: ITimePeriod;
-  isMobile: boolean;
-  onPeriodChange: (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    period: ITimePeriod
-  ) => void;
-  data: ITimePeriod[];
-}
-
-const TimelinePeriodsSlider = ({ activePeriod, isMobile, data, onPeriodChange }: IProps) => {
+const TimelinePeriodsSlider = ({ activePeriod, isMobile, data, onPeriodChange }: IPeriodsSliderProps) => {
   const events = activePeriod.events;
 
   const { showClickCircle, ClickCircleComponent } = useClickCircle();
@@ -101,7 +90,7 @@ const TimelinePeriodsSlider = ({ activePeriod, isMobile, data, onPeriodChange }:
       >
         {isMobile && (
           <TimeCircleControls
-            activePoint={activePeriod.id}
+              activePeriod={activePeriod}
             data={data}
             onPeriodChange={onPeriodChange}
           />

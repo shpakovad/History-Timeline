@@ -6,7 +6,7 @@ import HistoricalDatesTitle from "@components/HistoryTimeline/HistoricalDatesTit
 import SelectedPeriods from "@components/HistoryTimeline/SelectedPeriods/SelectedPeriods";
 import TimeCircleControls from "@components/HistoryTimeline/TimelineCircleSlider/components/TimeCircleControls/TimeCircleControls";
 import TimelineCircleSlider from "@components/HistoryTimeline/TimelineCircleSlider/TimelineCircleSlider";
-import TimelineDatesSlider from "@components/HistoryTimeline/TimelinePeriodsSlider/TimelinePeriodsSlider";
+import TimelinePeriodsSlider from "@components/HistoryTimeline/TimelinePeriodsSlider/TimelinePeriodsSlider";
 
 import { CIRCLE_SIZE } from "@data/constants/constants";
 import { getTimelineData, ITimePeriod } from "@data/timelineData";
@@ -15,6 +15,7 @@ import { useClickCircle } from "@hooks/useClickCircle";
 import { useDeviceDetection } from "@hooks/useDeviceDetection";
 
 import "./HistoryTimeline.scss";
+
 
 const HistoryTimeline = () => {
   const [periods, setPeriods] = useState<ITimePeriod[]>([]);
@@ -113,13 +114,13 @@ const HistoryTimeline = () => {
               </div>
             ) : (
               <TimeCircleControls
-                activePoint={activePeriod.id}
+                  activePeriod={activePeriod}
                 data={periods}
                 onPeriodChange={onPeriodChange}
               />
             )}
 
-            <TimelineDatesSlider
+            <TimelinePeriodsSlider
               activePeriod={activePeriod}
               isMobile={isMobile}
               data={periods}

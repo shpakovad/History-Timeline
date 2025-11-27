@@ -2,21 +2,13 @@ import React from "react";
 
 import { getDoubleNumberFormat } from "@utils/formatsUtils";
 
-import { ITimePeriod } from "@data/timelineData";
+import {ICircleControlsProps} from "@components/HistoryTimeline/types";
 
 import "./TimeCircleControls.scss";
 
-interface IProps {
-  activePoint: number;
-  onPeriodChange: (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    period: ITimePeriod
-  ) => void;
-  data: ITimePeriod[];
-}
-
-const TimeCircleControls = ({ activePoint, onPeriodChange, data }: IProps) => {
+const TimeCircleControls = ({ activePeriod, onPeriodChange, data }: ICircleControlsProps) => {
   const common = data.length;
+  const activePoint = activePeriod.id;
 
   return (
     <div className="wrapper-controls">

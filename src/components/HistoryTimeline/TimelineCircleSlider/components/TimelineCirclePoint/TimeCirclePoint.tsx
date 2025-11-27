@@ -2,21 +2,9 @@ import React, { useMemo, useState } from "react";
 
 import { calculateCirclePositionUtils } from "@utils/circlePositionUtils";
 
-import { ITimePeriod } from "@data/timelineData";
+import {ICirclePointProps} from "@components/HistoryTimeline/types";
 
 import "./TimelineCirclePoint.scss";
-
-interface IProps {
-  period: ITimePeriod;
-  periodsLength: number;
-  onPeriodChange: (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    period: ITimePeriod
-  ) => void;
-  activePeriod: ITimePeriod | null;
-  index: number;
-  targetRotation: number;
-}
 
 const TimelineCirclePoint = ({
   period,
@@ -25,7 +13,7 @@ const TimelineCirclePoint = ({
   activePeriod,
   index,
   targetRotation,
-}: IProps) => {
+}: ICirclePointProps) => {
   const { id } = period;
   const [isHovered, setIsHovered] = useState<boolean>(false);
 

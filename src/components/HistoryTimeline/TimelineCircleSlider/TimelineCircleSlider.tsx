@@ -6,22 +6,14 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
 import TimeCirclePoint from "@components/HistoryTimeline/TimelineCircleSlider/components/TimelineCirclePoint/TimeCirclePoint";
+import {ISliderProps} from "@components/HistoryTimeline/types";
 
 import { ITimePeriod } from "@data/timelineData";
 
 import "./TimelineCircleSlider.scss";
 
-interface IProps {
-  data: ITimePeriod[];
-  onPeriodChange: (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    period: ITimePeriod
-  ) => void;
-  activePeriod: ITimePeriod | null;
-  targetRotation: number;
-}
 
-const TimelineCircleSlider = ({ data, onPeriodChange, activePeriod, targetRotation }: IProps) => {
+const TimelineCircleSlider = ({ data, onPeriodChange, activePeriod, targetRotation }: ISliderProps) => {
   return (
     <>
       {data.map((item: ITimePeriod, index: number) => (
