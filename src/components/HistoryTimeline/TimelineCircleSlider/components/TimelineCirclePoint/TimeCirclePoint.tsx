@@ -63,6 +63,7 @@ const TimelineCirclePoint = ({
 
   return (
     <button
+      aria-label="period-circle"
       className={classForCirclePoint}
       style={pointStyle}
       onMouseEnter={handleMouseEnter}

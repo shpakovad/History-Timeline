@@ -4,11 +4,15 @@ import "webpack-dev-server";
 import path = require("path");
 import HtmlWebpackPlugin = require("html-webpack-plugin");
 
+const TerserPlugin = require('terser-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+
 const config: Configuration = {
+  mode: 'production',
   entry: "./src/index.tsx",
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "bundle.[contenthash].js",
+    filename: '[name].[contenthash].js',
     clean: true,
     publicPath: "/",
   },
@@ -55,6 +59,29 @@ const config: Configuration = {
         ],
       },
     ],
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          compress: {
+            drop_console: true,
+          }
+        }
+      }),
+      new CssMinimizerPlugin(),
+    ],
+    splitChunks: {
+      chunks: 'all',
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        }
+      }
+    }
   },
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx", ".scss", ".css"],

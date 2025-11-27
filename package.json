@@ -5,6 +5,7 @@
   "scripts": {
     "start": "webpack serve --mode development",
     "build": "webpack --mode production",
+    "dev": "webpack serve --mode=development",
     "type-check": "tsc --noEmit",
     "format": "prettier --write src/**/*.{ts,tsx,scss}",
     "format:check": "prettier --check src/**/*.{ts,tsx,scss}"
@@ -24,19 +25,23 @@
     "@types/swiper": "^5.4.3",
     "@types/webpack": "^5.28.5",
     "@types/webpack-dev-server": "^4.7.1",
+    "babel-loader": "^10.0.0",
     "css-loader": "^7.1.2",
+    "css-minimizer-webpack-plugin": "^7.0.2",
     "html-webpack-plugin": "^5.6.5",
     "prettier": "^3.0.0",
     "prettier-plugin-organize-imports": "^4.3.0",
     "sass": "^1.94.2",
     "sass-loader": "^16.0.6",
     "style-loader": "^4.0.0",
+    "terser-webpack-plugin": "^5.3.14",
     "ts-loader": "^9.5.4",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3",
     "webpack": "^5.103.0",
     "webpack-cli": "^6.0.1",
-    "webpack-dev-server": "^5.2.2"
+    "webpack-dev-server": "^5.2.2",
+    "webpack-manifest-plugin": "^6.0.1"
   },
   "dependencies": {
     "gsap": "^3.13.0",
